@@ -3,11 +3,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class NumberAnalyser {
+
+
     public static void main(String[] args)
     {
 
         float sum=0;
-        float average=0;
+        float average;
         float largestNumber=0;
         float smallestNumber=0;
         int evenNumbersAmount=0;
@@ -20,7 +22,7 @@ public class NumberAnalyser {
                 "Average",
                 "Largest number",
                 "Smallest number",
-                "How many even numbers"
+                "How many even numbers (Type \"even\")"
         ));
 
         while (gameRunning){
@@ -57,27 +59,75 @@ public class NumberAnalyser {
             switch (answer)
             {
                 case "sum","1":
-                    for(int i = 0;i < numbers.size();i++)
-                    {
-                        sum = sum + numbers.get(i);
+                    for (Float number : numbers) {
+                        sum = sum + number;
 
                     }
                     System.out.println(sum);
                     break;
                 case "average","2":
-                    for (int i=0;i < numbers.size();i++)
+                    for (Float number: numbers)
                     {
-                        sum = sum + numbers.get(i);
+                        sum = sum + number;
                     }
 
                     average = sum / numbers.size();
                     System.out.println(average);
+                    break;
+                case "largest number","3":
+                    for (Float number: numbers)
+                    {
+                        if (largestNumber < number)
+                        {
+                            largestNumber = number;
+                        }
+                        System.out.println(largestNumber);
+                    }
+                    break;
+                case "smallest number", "4":
+
+                    smallestNumber = numbers.getFirst();
+                    for (Float number: numbers)
+                    {
+                        if(number < smallestNumber)
+                        {
+                            smallestNumber = number;
+                        }
+                    }
+                    break;
+                case "even", "5":
+                    for (Float number: numbers)
+                    {
+                        if (number%2==0)
+                        {
+                            evenNumbersAmount++;
+                        }
+                    }
+                    break;
+
             }
+            gameRunning = gameRunOption(gameRunning);
+
+
 
 
 
 
     }
 
+
+    }
+    public static boolean gameRunOption(boolean gameRunning)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Do you want to continue? (yes/no)");
+        String option = scanner.nextLine().toLowerCase();
+        if (option.equals("no"))
+        {
+
+            return false;
+
+        }
+        return true;
     }
 }
