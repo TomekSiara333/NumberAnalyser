@@ -81,8 +81,9 @@ public class NumberAnalyser {
                         {
                             largestNumber = number;
                         }
-                        System.out.println(largestNumber);
+
                     }
+                    System.out.println(largestNumber);
                     break;
                 case "smallest number", "4":
 
